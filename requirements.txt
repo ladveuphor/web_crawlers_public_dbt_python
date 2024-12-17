@@ -1,0 +1,8 @@
+dbt-core
+dbt-duckdb
+pyarrow
+numpy
+pandas
+python-Levenshtein
+textdistance
+humanize

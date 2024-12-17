@@ -1,0 +1,36 @@
+
+version: 2
+
+models:
+  - name: get_df_pre_processed
+    description: "Modèle qui prépare le dataset : trie des colonnes, création de la colonne date + heure"
+
+
+  - name: get_df_with_id
+    description: "Modèle qui crée une colonne id unique pour chaque session 
+                  (plusieurs lignes/actions d'une même session auront donc le même id)"
+    columns:
+      - name: id
+        description: "La clé primaire unique pour chaque session"
+        tests:
+          - unique
+          - not_null
+
+  - name: get_df_with_features
+    description: "Modèle qui crée les features pour le modèle IA de classification comme
+                  le total_requests, le max_requests_per_page, le total_clicks, le max_clicks_per_page, etc."
+  
+  - name: get_df_with_labels
+    description: "Modèle qui crée les labels pour le modèle IA de classification"
+    columns:
+      - name: id
+        description: "La clé primaire unique pour chaque session"
+        tests:
+          - unique
+          - not_null
+
+      - name: is_robot
+        description: "Le label de la session : 1 si c'est son utilisateur est un robot, 0 sinon"
+        tests:
+          - not_null
+          # rajouter un test egal à 1 ou 0 comme valeurs exclusives

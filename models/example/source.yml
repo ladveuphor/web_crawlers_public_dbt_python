@@ -1,0 +1,11 @@
+sources:
+  - name: web_crawlers
+    schema: main
+    tables:
+      - name: test
+        description: "Table de test"
+        columns:
+          - name: id
+            description: Id unique
+            tests:
+              - not_null
